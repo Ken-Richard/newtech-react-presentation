@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <style></style>
+</head>
+
+<body>
+
+  <div id="container"></div>
+
+  <script type="text/babel">
+    var HelloWorld = React.createClass({
+
+      getInitialState: function() {
+        return { clicks: 0 };
+      },
+
+      handleClick: function(e) {
+        e.preventDefault();
+        this.setState({ clicks: this.state.clicks + 1 })
+      },
+
+      render: function() {
+        return (
+          <div>
+            <h1>Hello {this.props.name} - #{this.state.clicks}</h1>
+            <button onClick={this.handleClick}>Click Me</button>
+          </div>
+        )
+      }
+    })
+
+    ReactDOM.render(
+      <div>
+        <HelloWorld name="New Tech Meetup"/>
+      </div>,
+      document.getElementById("container")
+    );
+  </script>
+</body>
+
+</html>
